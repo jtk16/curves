@@ -4,19 +4,24 @@ public class LagrangianInterpolation extends Curve {
 
     public Point[] points;
 
-    private double minX;
-    private double maxX;
+    public double minX;
+    public double maxX;
 
     public LagrangianInterpolation(Point[] points) {
         this.points = points;
 
-        minX = points[0].x;
-        maxX = points[0].x;
+        super.minX = points[0].x;
+        super.maxX = points[0].x;
 
         for (int i = 1; i < points.length; i++) {
-            minX = Math.min(minX, points[i].x);
-            maxX = Math.max(maxX, points[i].x);
+            super.minX = Math.min(super.minX, points[i].x);
+            super.maxX = Math.max(super.maxX, points[i].x);
         }
+
+        this.minX = super.minX;
+        this.maxX = super.maxX;
+
+        System.out.println("lagrange min: " + super.minX + ", bezier max: " + super.maxX);
     }
 
     public static void main(String[] args) {
@@ -53,6 +58,6 @@ public class LagrangianInterpolation extends Curve {
 
     @Override
     double evaluate(double t) {
-        return P(minX + (maxX - minX) * t);
+        return P(this.minX + (this.maxX - this.minX) * t);
     }
 }

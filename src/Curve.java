@@ -1,13 +1,13 @@
 import java.awt.*;
 
 public abstract class Curve {
-    Point[] points;
+    public Point[] points;
 
-    double minX;
-    double maxX;
+    public double minX;
+    public double maxX;
 
-    double scaleFactor;
-    Point endpoint;
+    public double scaleFactor;
+    public Point endpoint;
 
     /**
      * @return the output of the curve at a value (t) between 0 and 1

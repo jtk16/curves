@@ -9,8 +9,8 @@ public class VariantDegreeBezier extends Curve {
      */
     public Point[] points;
 
-    private double minX;
-    private double maxX;
+    public double minX;
+    public double maxX;
 
     public VariantDegreeBezier(Point[] points) throws ArrayIndexOutOfBoundsException {
         if (points.length != 4) {
@@ -20,13 +20,18 @@ public class VariantDegreeBezier extends Curve {
         this.points = points;
         this.endpoint = points[3];
 
-        minX = points[0].x;
-        maxX = points[0].x;
+        super.minX = points[0].x;
+        super.maxX = points[0].x;
 
         for (int i = 1; i < points.length; i++) {
-            minX = Math.min(minX, points[i].x);
-            maxX = Math.max(maxX, points[i].x);
+            super.minX = Math.min(super.minX, points[i].x);
+            super.maxX = Math.max(super.maxX, points[i].x);
         }
+
+        this.minX = super.minX;
+        this.maxX = super.maxX;
+
+        System.out.println("bezier min: " + super.minX + ", bezier max: " + super.maxX);
     }
 
     public static void main(String[] args) {
